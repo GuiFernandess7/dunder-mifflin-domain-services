@@ -4,5 +4,4 @@ Repository containing the business logic layer for a fictional application handl
 
 ## Database Tables:
 
-![company-database](https://github.com/GuiFernandess7/dunder-mifflin-domain-services/assets/63022500/dc5d5678-e033-4a59-a86a-10f484141653)
-
+![company-database](https://github.com/GuiFernandess7/dunder-mifflin-domain-services/assets/63022500/48a71f19-a413-4754-b091-ed78076079d7)
