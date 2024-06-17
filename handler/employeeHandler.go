@@ -27,6 +27,7 @@ func ListEmployeesHandler(ctx *gin.Context){
             BirthDay: &emp.BirthDay.Time,
             Sex:      emp.Sex.String,
             Salary:   int(emp.Salary.Int32),
+			Branch:	  emp.BranchName.String,
         }
         responseData = append(responseData, response)
     }

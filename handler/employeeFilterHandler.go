@@ -45,7 +45,6 @@ func ListEmployeesFilterHandler(ctx *gin.Context) {
 	if sex == "" {
 		employees, err = use_cases.GetEmployeesBy(minSalary, maxSalary, nil, dbRepository, ctx)
 	} else {
-        //validateSexParam(sex, ctx)
 		employees, err = use_cases.GetEmployeesBy(minSalary, maxSalary, &sex, dbRepository, ctx)
 	}
 

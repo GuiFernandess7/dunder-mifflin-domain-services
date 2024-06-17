@@ -15,6 +15,7 @@ type EmployeeResponse struct {
     BirthDay *time.Time `json:"birthday,omitempty"`
     Sex      string     `json:"sex"`
     Salary   int        `json:"salary"`
+	Branch   string 	`json:"branch"`
 }
 
 func sendSuccess(ctx *gin.Context, op string, data interface{}){
