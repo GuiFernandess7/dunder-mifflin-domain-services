@@ -7,15 +7,14 @@ import (
 
 func main(){
 	router.Initialize()
-	/* db, err := config.InitializeDB()
-	if err != nil {
-		return
-	}
+	/* db := config.InitializeDB()
 
 	ctx := context.Background()
 	db_repository := database.New(db)
 
-	employee, err := use_cases.SearchEmployeesBySalesQtd(1000, 20000, db_repository, ctx)
+	//sex := "M"
+
+	employee, err := use_cases.GetEmployeesBy(50000, 70000, nil, db_repository, ctx)
 
 	if err != nil {
 		fmt.Println(err)
