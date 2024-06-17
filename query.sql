@@ -78,7 +78,7 @@ WHERE employee.emp_id IN (
 );
 
 -- name: GetClientsByEmployee :many
-SELECT c.client_name
+SELECT c.client_id, c.client_name
 FROM client c
 JOIN branch b ON c.branch_id = b.branch_id
 JOIN employee e ON b.mgr_id = e.emp_id

@@ -222,26 +222,31 @@ func (q *Queries) GetClientbyBranch(ctx context.Context, branch string) ([]GetCl
 }
 
 const getClientsByEmployee = `-- name: GetClientsByEmployee :many
-SELECT c.client_name
+SELECT c.client_id, c.client_name
 FROM client c
 JOIN branch b ON c.branch_id = b.branch_id
 JOIN employee e ON b.mgr_id = e.emp_id
 WHERE e.first_name = $1::VARCHAR
 `
 
-func (q *Queries) GetClientsByEmployee(ctx context.Context, firstName string) ([]sql.NullString, error) {
+type GetClientsByEmployeeRow struct {
+	ClientID   int32
+	ClientName sql.NullString
+}
+
+func (q *Queries) GetClientsByEmployee(ctx context.Context, firstName string) ([]GetClientsByEmployeeRow, error) {
 	rows, err := q.db.QueryContext(ctx, getClientsByEmployee, firstName)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []sql.NullString
+	var items []GetClientsByEmployeeRow
 	for rows.Next() {
-		var client_name sql.NullString
-		if err := rows.Scan(&client_name); err != nil {
+		var i GetClientsByEmployeeRow
+		if err := rows.Scan(&i.ClientID, &i.ClientName); err != nil {
 			return nil, err
 		}
-		items = append(items, client_name)
+		items = append(items, i)
 	}
 	if err := rows.Close(); err != nil {
 		return nil, err

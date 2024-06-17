@@ -10,10 +10,11 @@ func initializeRoutes(router *gin.Engine){
 	v1 := router.Group(basePath)
 	{
 		v1.GET("/health-check", )
+		v1.GET("/clients/employee", handler.GetClientByEmployeeHandler)
+		v1.GET("/clients/search", handler.GetClientByBranchHandler)
 		v1.GET("/employees", handler.ListEmployeesHandler)
 		v1.GET("/employees/filter", handler.ListEmployeesFilterHandler)
 		v1.GET("/employees/search", handler.SearchEmployeeHandler)
 		v1.GET("/employees/sales/search", handler.GetEmployeeBySalesQtd)
-		v1.GET("/clients/search", handler.GetClientByBranchHandler)
 	}
 }

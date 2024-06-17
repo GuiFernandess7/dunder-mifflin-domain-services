@@ -29,6 +29,11 @@ type ClientResponse struct {
 	Branch		string	`json:"branch_name"`
 }
 
+type ClientNameResponse struct {
+	ClientID	int 	`json:"client_id"`
+	ClientName	string	`json:"client_name"`
+}
+
 func sendSuccess(ctx *gin.Context, op string, data interface{}){
 	ctx.Header("Content-type", "application/json")
 	ctx.JSON(http.StatusOK, gin.H{
