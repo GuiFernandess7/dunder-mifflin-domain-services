@@ -189,6 +189,7 @@ SELECT client.client_id, client_name, branch.branch_name
 FROM client
 JOIN branch
 ON branch.branch_id = client.branch_id
+WHERE branch.branch_name = $1::VARCHAR
 `
 
 type GetClientbyBranchRow struct {
@@ -197,8 +198,8 @@ type GetClientbyBranchRow struct {
 	BranchName sql.NullString
 }
 
-func (q *Queries) GetClientbyBranch(ctx context.Context) ([]GetClientbyBranchRow, error) {
-	rows, err := q.db.QueryContext(ctx, getClientbyBranch)
+func (q *Queries) GetClientbyBranch(ctx context.Context, branch string) ([]GetClientbyBranchRow, error) {
+	rows, err := q.db.QueryContext(ctx, getClientbyBranch, branch)
 	if err != nil {
 		return nil, err
 	}

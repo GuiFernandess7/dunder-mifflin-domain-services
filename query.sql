@@ -64,7 +64,8 @@ ON employee.emp_id = branch.mgr_id;
 SELECT client.client_id, client_name, branch.branch_name
 FROM client
 JOIN branch
-ON branch.branch_id = client.branch_id;
+ON branch.branch_id = client.branch_id
+WHERE branch.branch_name = @branch::VARCHAR;
 
 -- name: GetEmployeeBySalesQtd :many
 SELECT employee.first_name, employee.last_name

@@ -13,5 +13,6 @@ func initializeRoutes(router *gin.Engine){
 		v1.GET("/employees", handler.ListEmployeesHandler)
 		v1.GET("/employees/filter", handler.ListEmployeesFilterHandler)
 		v1.GET("/employees/search", handler.SearchEmployeeHandler)
+		v1.GET("/clients/search", handler.GetClientByBranchHandler)
 	}
 }
