@@ -18,6 +18,11 @@ type EmployeeResponse struct {
 	Branch   string 	`json:"branch"`
 }
 
+type EmployeeNameResponse struct {
+    FirstName string    `json:"first_name"`
+    LastName string     `json:"last_name"`
+}
+
 type ClientResponse struct {
 	ClientID	int 	`json:"client_id"`
 	ClientName	string	`json:"client_name"`
