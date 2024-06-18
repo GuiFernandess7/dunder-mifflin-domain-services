@@ -34,6 +34,12 @@ type ClientNameResponse struct {
 	ClientName	string	`json:"client_name"`
 }
 
+type SupplierResponse struct {
+	SupplierName string 	`json:"supplier"`
+	BranchName 	string 		`json:"branch"`
+	SupplyType 	string 		`json:"supply_type"`
+}
+
 func sendSuccess(ctx *gin.Context, op string, data interface{}){
 	ctx.Header("Content-type", "application/json")
 	ctx.JSON(http.StatusOK, gin.H{
