@@ -1,10 +1,14 @@
 package handler
 
+import "github.com/gin-gonic/gin"
+
 type checkResponse struct {
-	status	string
+	Status	string `json:"status"`
 }
 
-func HealthCheck() (checkResponse){
-	response := checkResponse{}
-	return response
+func HealthCheck(ctx *gin.Context) {
+	responseData := checkResponse{
+		Status: 	"Working!",
+	}
+	sendSuccess(ctx, "Sucess", responseData)
 }
